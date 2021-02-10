@@ -1,0 +1,24 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=ChatApplication
+  server:
+    container_name: server
+    build: ${PWD}/backend
+    depends_on:
+      - postgres
+    ports:
+      - 50101:50101
+    environment:
+      - SQL_HOST=postgres
+      - SQL_PORT=5432
+
+volumes:
+  postgres_data:

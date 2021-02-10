@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package chatApp;
+
+// import "google/protobuf/timestamp.proto";
+
+// The service responsible for managing user information
+service ChatApplication {
+    // Creates a new user
+    rpc CreateUser(UserRequest) returns (CreateUserResponse);
+
+    // Verify a user's username and password
+    rpc VerifyCredentials(UserRequest) returns (VerifyCredentialsResponse);
+
+    // Creates a message
+    rpc CreateMessage (CreateMessageRequest) returns (CreateMessageResponse);
+
+    // Retrieves messages
+    rpc GetMessages (UserRequest) returns (stream MessageResponse);
+}
+
+// User request
+message UserRequest {
+    string email = 1;
+    string password = 2;
+}
+
+// Response when creating a new user
+message CreateUserResponse {
+    bool isCreated = 1;
+}
+
+// Response that indicates if the credentials were correct
+message VerifyCredentialsResponse {
+    bool isValid = 1;
+}
+
+// Message sent by the user
+message CreateMessageRequest {
+    UserRequest user = 1;
+    string message = 2;
+}
+
+// Response when creating a new message
+message CreateMessageResponse {
+    bool isCreated = 1;
+}
+
+// Individual message response
+message MessageResponse {
+    string email = 1;
+    string message = 2;
+    // google.protobuf.Timestamp timeStamp = 3;
+}
