@@ -1,4 +1,9 @@
-# Requirements
+# Chatter
+
+* Chat application supporting multiple concurrent users leveraging gRPC with Protocol Buffers in Python and Dart
+* Microservice architecture with Docker and Docker-Compose to improve maintainability and scalability
+
+## Requirements
 
 1. gRPC
 2. Flutter
@@ -6,7 +11,7 @@
 4. Docker Compose
 5. (Optional) protoc
 
-# Steps
+## Steps
 
 0. Make sure that all the requirements are met before starting!
 
